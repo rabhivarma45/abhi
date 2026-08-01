@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#36d1dc,#5b86e5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    width:400px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.gender{
+    margin:10px 0;
+}
+
+.gender label{
+    margin-right:15px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin-top:15px;
+    background:#007BFF;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.error{
+    color:red;
+    text-align:center;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create Account</h2>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="tel" id="phone" placeholder="Mobile Number">
+
+<input type="date" id="dob">
+
+<div class="gender">
+Gender:
+<label><input type="radio" name="gender"> Male</label>
+<label><input type="radio" name="gender"> Female</label>
+</div>
+
+<input type="password" id="password" placeholder="Password">
+
+<input type="password" id="confirm" placeholder="Confirm Password">
+
+<input type="text" id="address" placeholder="Address">
+
+<label>
+<input type="checkbox" id="terms">
+I accept Terms & Conditions
+</label>
+
+<button type="submit">Register</button>
+
+<p class="error" id="error"></p>
+
+</form>
+
+</div>
+
+<script>
+
+function validateForm(){
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let password=document.getElementById("password").value;
+let confirm=document.getElementById("confirm").value;
+let terms=document.getElementById("terms").checked;
+let error=document.getElementById("error");
+
+if(name==""||email==""||phone==""||password==""||confirm==""){
+error.innerHTML="Please fill all fields.";
+return false;
+}
+
+if(password!=confirm){
+error.innerHTML="Passwords do not match.";
+return false;
+}
+
+if(!terms){
+error.innerHTML="Accept Terms & Conditions.";
+return false;
+}
+
+alert("Registration Successful!");
+
+return true;
+
+}
+
+</script>
+
+</body>
+</html>
